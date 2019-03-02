@@ -5,6 +5,7 @@
         <v-title 
           :title="title"
           shadow="How"
+          centred
         />
         <p class="section-text">{{ description }}</p>
       </div>
@@ -72,21 +73,22 @@ export default {
   overflow: hidden
 
 .section-left
-  width: 42%
+  margin: 0 auto
+  width: 70%
   flex-shrink: 0
+  text-align: center
 
 .section-right
+  margin-top: 30px
   position: relative
 
 .section-wrap
   display: flex
-  flex-direction: row
-  align-items: flex-end
+  flex-direction: column
 
 .steps > div
   display: flex
   flex-direction: row
-  margin-left: 100px
 
 .step
   margin-right: 30px

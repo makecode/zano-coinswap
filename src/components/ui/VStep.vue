@@ -42,7 +42,7 @@ $bg-slider-item-color-two = #1d2e6a
 .step
   position: relative
   padding: 40px
-  width: 350px
+  min-width: 350px
   height: 350px
   display: inline-block
   border-radius: 20px

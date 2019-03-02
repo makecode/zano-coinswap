@@ -8,6 +8,7 @@ import VQuestions from './VQuestions';
 import VDropDown from './VDropDown';
 import VCountdown from './VCountdown';
 import VStep from './VStep';
+import VParticles from './VParticles';
 
 export {
   VButton,
@@ -19,5 +20,6 @@ export {
   VQuestions,
   VDropDown,
   VCountdown,
-  VStep
+  VStep,
+  VParticles
 }

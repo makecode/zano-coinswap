@@ -62,6 +62,10 @@ img
 *
   box-sizing: border-box
 
+.container
+  width: $containerDesktop
+  margin: 0 auto
+
 .section
 
   .section__text
@@ -71,4 +75,13 @@ img
     text-align: center
 
     .section__text
+      display: block
+      margin: 0 auto
       max-width: 730px
+
+  &.faq
+    .title
+      display: block
+
+.text-blue
+  color: $blue

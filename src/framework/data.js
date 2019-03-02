@@ -6,6 +6,57 @@ export const heroTitle = [
 
 export const heroDescription = 'Boolberry holders can swap their coins to Zano, learn more in wp and stats below.';
 
+export const CHART_SECTION = {
+  counterTotal: {
+    text: [{ title: 'Total' }],
+    shadow: 'Total',
+    counter: '100,000,00'
+  },
+  counterDone: {
+    text: [{ title: 'Coins' }, { title: 'Swapped' }],
+    shadow: 'Swapped',
+    counter: '81,023,01'
+  },
+  periodCurrent: {
+    title: {      
+      text: [{ title: 'Now' }],
+      shadow: 'Now'
+    },
+    periodNum: 2,
+    monthFirst: {
+      title: 'April',
+      day: 1 
+    },
+    monthSecond: {
+      title: 'May',
+      day: 31
+    },
+    ratio: {
+      bbr: 1,
+      zan: 50
+    }
+  },
+  periodNext: {
+    title: {
+      text: [{ title: 'Next' }],
+      shadow: 'Next'
+    },
+    periodNum: 3,
+    monthFirst: {
+      title: 'July',
+      day: 1 
+    },
+    monthSecond: {
+      title: 'September',
+      day: 31
+    },
+    ratio: {
+      bbr: 1,
+      zan: 25
+    }
+  }
+};
+
 export const stepsTitle = [
   { title: 'How' },
   { title: 'To' },

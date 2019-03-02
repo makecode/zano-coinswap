@@ -45,9 +45,9 @@ export default {
     &__icon
       margin-right: 10px
       display: inline-block
-      width: 75px
+      width: 70px
       height: 70px
-      background-image: url('../../assets/icon-question.png')
+      background-image: url('../../assets/icon-whatis.svg')
 
     &__title
       color: white
