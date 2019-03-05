@@ -10,12 +10,12 @@ export const CHART_SECTION = {
   counterTotal: {
     text: [{ title: 'Total' }],
     shadow: 'Total',
-    counter: '100,000,00'
+    counter: '18,446,744'
   },
   counterDone: {
     text: [{ title: 'Coins' }, { title: 'Swapped' }],
     shadow: 'Swapped',
-    counter: '81,023,01'
+    counter: '0'
   },
   periodCurrent: {
     title: {      
@@ -25,7 +25,7 @@ export const CHART_SECTION = {
     periodNum: 2,
     monthFirst: {
       title: 'April',
-      day: 1 
+      day: 1
     },
     monthSecond: {
       title: 'May',
