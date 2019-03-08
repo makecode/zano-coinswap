@@ -8,14 +8,15 @@
       <the-faq />
       <the-footer />
     </div>
-    <VParticles />
+    <!--<VParticles />-->
   </div>
 </template>
 
 <script>
 import 'normalize.css';
 import { TheHeader, TheFooter, TheHero, TheChart, TheHowTo, TheFaq } from './components/layout';
-import { VParticles } from './components/ui';
+// import { VParticles } from './components/ui';
+
 export default {
   components: {
     TheHeader,
@@ -24,7 +25,7 @@ export default {
     TheChart,
     TheHowTo,
     TheFaq,
-    VParticles
+    // VParticles
   }
 }
 </script>
@@ -37,8 +38,8 @@ export default {
   font-size: 16px
   font-family: 'Roboto', sans-serif
   background-color: $bg-body
+  background: $bg-body url('assets/bg-coinswap.png') repeat
   color: $text-main
-  font-size: 16px
   font-weight: 400
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale

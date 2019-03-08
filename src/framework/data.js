@@ -4,7 +4,7 @@ export const heroTitle = [
   { title: 'Swap' }
 ];
 
-export const heroDescription = 'Boolberry holders can swap their coins to Zano, learn more in wp and stats below.';
+export const heroDescription = 'Boolberry holders can swap their coins for Zano, learn more in the whitepaper and FAQ below.';
 
 export const CHART_SECTION = {
   counterTotal: {
@@ -18,7 +18,7 @@ export const CHART_SECTION = {
     counter: '0'
   },
   periodCurrent: {
-    title: {      
+    title: {
       text: [{ title: 'Now' }],
       shadow: 'Now'
     },
@@ -44,7 +44,7 @@ export const CHART_SECTION = {
     periodNum: 3,
     monthFirst: {
       title: 'July',
-      day: 1 
+      day: 1
     },
     monthSecond: {
       title: 'September',
@@ -59,13 +59,13 @@ export const CHART_SECTION = {
 
 export const stepsTitle = [
   { title: 'How' },
-  { title: 'To' },
+  { title: 'to' },
   { title: 'Swap' },
   { title: 'Your' },
   { title: 'Coins', blue: true }
 ];
 
-export const stepsDescription = 'Every Boolberry holder is invited to participate. It can be done with both the Boolberry wallet and the exchange wallet; you follow the steps described on the cards to the left. Swapped coins will no longer exist in the Boolberry network, and this action is irreversible.';
+export const stepsDescription = 'Every Boolberry holder is invited to participate. It can be done with either the Boolberry wallet or the exchange wallet; simply follow the steps described on the cards to the left. Swapped coins will no longer exist in the Boolberry network and this action is irreversible.';
 
 export const steps = [
   {
@@ -78,13 +78,13 @@ export const steps = [
     icon: 'step-two',
     title: 'Step 2',
     subtitle: 'Create the wallet',
-    description: 'Create the wallet, its address you’ll use to swap your Boolberry (BBR) coins. Make sure you store your seed phrase in a safe place.'
+    description: 'Create your wallet, this is the address you’ll use to swap your Boolberry (BBR) coins. Make sure you store your seed phrase in a safe place.'
   },
   {
     icon: 'step-three',
     title: 'Step 3',
     subtitle: 'Swap the coins',
-    description: 'Send the swap transaction from your BBR wallet; it’ll be marked as a Zano transaction in your wallet. After this step, your BBR coins will be no longer accessible.'
+    description: 'Send the swap transaction from your BBR wallet; it will be marked as a Zano transaction in your wallet. After this step, your BBR coins will be no longer accessible.'
   },
   {
     icon: 'step-four',
@@ -100,19 +100,54 @@ export const faqTitle = [
 
 export const faq = [
   {
-    id: 0, 
-    title: 'What is Coinswap?', 
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt enim repellat id numquam excepturi cum commodi beatae similique recusandae omnis quaerat, quam corrupti odit est dolorem eligendi ad molestias qui facere. Rem doloribus excepturi eos veniam, ipsam sapiente eligendi laborum numquam maiores?',
+    id: 0,
+    title: 'What is Zano total supply?',
+    description: 'Total Zano supply is equal to Total Boolberry supply which is 18,446,744. Initial exchange ratio is 1:1.',
     active: true
   },
-  { 
-    id: 1, 
-    title: 'How Can I Get Some Tokens?', 
-    description: 'Ab expedita in nemo magni dolores, consectetur nesciunt veritatis dignissimos reiciendis, sequi ea excepturi cupiditate. Sequi ratione libero, iste eius vel nesciunt vero! Quos, ratione asperiores. Ea quasi provident placeat nostrum earum ab magnam voluptatum, tempore eveniet veniam? '
+  {
+    id: 1,
+    title: 'What’s the ratio?',
+    description: 'For the first three month of the swap ratio is fixed at 1:1 and later will gradually decrease until the end of the swap period, that should be one-year total. More details could be found in Coinswap Whitepaper available here.'
   },
-  { 
-    id: 2, 
-    title: 'How Can I Use My Tokens?', 
-    description: 'Voluptas fuga necessitatibus nihil vitae blanditiis iusto corrupti. Provident, recusandae. Accusantium molestiae quo deleniti vitae laudantium voluptatibus accusamus culpa, et minus sapiente expedita voluptatum optio nobis est. Sit enim saepe qui accusamus tempore provident odit quae iure quos ipsum dolorum facilis, cupiditate quia quis quas nostrum temporibus, nesciunt expedita assumenda eum!'
+  {
+    id: 2,
+    title: 'How long coins swap will run?',
+    description: 'One year.'
+  },
+  {
+    id: 3,
+    title: 'How long coins swap will run?',
+    description: 'One year.'
+  },
+  {
+    id: 4,
+    title: 'How many coins reserved for the swap?',
+    description: 'Current Boolberry supply +20% premine for a development fund.'
+  },
+  {
+    id: 5,
+    title: 'What will happen with unswapped coins?',
+    description: 'After the swap is concluded the remaining unswapped coins will be added back to emission to be later distributed as block reward and 20% of it will be kept for developer fund.'
+  },
+  {
+    id: 6,
+    title: 'Why aren’t the unswapped coins being burned?',
+    description: 'Lower supply means low liquidity and higher risk of PoW double spend attack due to cheap hash power. This is less critical for a Hybrid PoW/PoS blockchain such as Zano but it’s still an important factor.'
+  },
+  {
+    id: 7,
+    title: 'How can I make sure that swapped BBR aren’t available anymore?',
+    description: '?'
+  },
+  {
+    id: 8,
+    title: 'What if I store my coins on exchange?',
+    description: 'You can still send them to your Zano address, it doesn’t matter where they came from.'
+  },
+  {
+    id: 9,
+    title: 'Is swap reversable?',
+    description: 'No, this is irreversible transaction so please make sure you absolutely understand what are you doing before sending your BBR coins to your Zano wallet.'
   }
 ];
