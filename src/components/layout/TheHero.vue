@@ -38,7 +38,7 @@ export default {
     heroTitle,
     heroText: heroDescription,
     dropDownItems: [
-      { title: 'Github', link: 'https://github.com/zano-project/zano' }
+      { title: 'Github', link: 'https://github.com/hyle-team/zano' }
     ]
   })
 }
