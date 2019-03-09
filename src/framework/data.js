@@ -137,16 +137,11 @@ export const faq = [
   },
   {
     id: 7,
-    title: 'How can I make sure that swapped BBR aren’t available anymore?',
-    description: '?'
-  },
-  {
-    id: 8,
     title: 'What if I store my coins on exchange?',
     description: 'You can still send them to your Zano address, it doesn’t matter where they came from.'
   },
   {
-    id: 9,
+    id: 8,
     title: 'Is swap reversable?',
     description: 'No, this is irreversible transaction so please make sure you absolutely understand what are you doing before sending your BBR coins to your Zano wallet.'
   }
