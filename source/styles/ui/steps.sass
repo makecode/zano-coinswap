@@ -1,0 +1,64 @@
+$bg-slider-item-color-one: #16234d
+$bg-slider-item-color-two: #1d2e6a
+
+.steps
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+
+//.step
+//  margin-right: 30px
+
+.step
+  position: relative
+  padding: 30px
+  width: 270px
+  height: 350px
+  display: inline-block
+  border-radius: 20px
+  background-image: linear-gradient(to right, $bg-slider-item-color-one, $bg-slider-item-color-two)
+  z-index: 10
+  text-align: left
+
+.step-title
+  position: relative
+  margin-bottom: 30px
+  display: flex
+  flex-direction: row
+  align-items: center
+  color: white
+
+.step-title-active
+  padding: 14px 0 14px 14px
+  position: absolute
+  top: 50%
+  right: 0
+  transform: translateY(-50%)
+  transition: all 0.5s ease-in-out
+  cursor: pointer
+
+.step-title-active:hover
+  right: -10px
+
+.step-title-text
+  margin-left: 14px
+  font-weight: 600
+  text-transform: uppercase
+
+.step-subtitle
+  margin: 0 0 10px
+  font-size: 15px
+  line-height: 1.6
+  text-transform: uppercase
+  color: $text-controls
+
+.step-description
+  margin: 0
+  font-size: 14px
+  line-height: 1.6
+
+.step-button
+  position: absolute
+  bottom: 30px
+  left: 30px
+  width: calc(100% - 60px)

@@ -1,0 +1,44 @@
+.questions
+  margin: 30px auto
+  display: flex
+  flex-direction: column
+  width: 100%
+
+  .question
+    padding: 24px
+    width: 100%
+    border-radius: 20px
+    background: none
+    box-sizing: border-box
+    cursor: pointer
+    text-align: left
+
+    &__header
+      display: flex
+      flex-direction: row
+      align-items: center
+
+    &__icon
+      margin-right: 10px
+      display: inline-block
+      width: 70px
+      height: 70px
+      background-image: url('/static/images/icon-whatis.svg')
+
+    &__title
+      color: white
+      font-size: 16px
+
+    &__description
+      display: none
+      margin-top: 10px
+      font-size: 14px
+      line-height: 20px
+      letter-spacing: 0.8px
+
+    &.active
+      background: linear-gradient(to right, #16234d, #1d2e6a)
+      box-shadow: 0 20px 100px -20px rgba(0,0,0,0.75)
+
+      .question__description
+        display: block
