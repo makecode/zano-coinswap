@@ -1,14 +1,11 @@
-## Project setup
-```
-yarn install
-```
+### Simple React application.
 
-### Compiles and hot-reloads for development
-```
-yarn run dev
-```
+##### For see demo:
+1. install npm dependencies with command ```yarn```
+2. run ```node-static``` with simple command ```yarn serv```
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+##### Structure
+
+`/source/` - thats where you write code.
+
+`/build/` - compiled code, production will be here
