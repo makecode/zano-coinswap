@@ -6,6 +6,8 @@
   "dependencies": {
     "babel-preset-es2015": "^6.24.1",
     "classnames": "^2.2.6",
+    "d3": "^5.9.4",
+    "dayjs": "^1.8.14",
     "extract-text-webpack-plugin": "3.0.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

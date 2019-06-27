@@ -1,8 +1,10 @@
 export const MENU_ITEMS = [
   { title: 'Home',        link: 'https:/zano.org'                   },
-  { title: 'Coinswap',    link: '/'                                 },
   { title: 'Blog',        link: 'https://medium.com/@zano_project'  },
-  { title: 'Rescources',  link: 'https://docs.zano.org/'            }
+  { title: 'Roadmap',     link: 'https://zano.org/roadmap.html'     },
+  { title: 'Downloads',   link: 'https://zano.org/downloads.html'   },
+  { title: 'Rescources',  link: 'https://docs.zano.org/'            },
+  { title: 'Explorer',    link: 'https://explorer.zano.org/'        }
 ];
 
 export const SOCIAL_ICONS = [

@@ -12,6 +12,8 @@ export { default as Countdown } from './ui/Countdown/Countdown';
 export { default as DropDown } from './ui/DropDown/DropDown';
 export { default as Icon } from './ui/Icon/Icon';
 export { default as Logo } from './ui/Logo/Logo';
+export { default as Loader } from './ui/Loader/Loader';
+export { default as LineChart } from './ui/LineChart/LineChart';
 export { default as Nav } from './ui/Nav/Nav';
 export { default as Questions } from './ui/Questions/Questions';
 export { default as Social } from './ui/Social/Social';
