@@ -6,13 +6,19 @@ import * as d3 from 'd3';
 import dayjs from 'dayjs';
 
 import { Loader } from '../../index';
-import { API_GET_CHART_DATA } from "../../../framework/constants/api";
+import { TOTAL_COINS } from '../../../framework/constants/app';
 
 const DEFAULT_MARGIN = 20;
 const DEFAULT_WIDTH = 500;
 const DEFAULT_HEIGHT = 300;
 
 const INITIAL_BALLOON_PROPS = {
+  data: {},
+  x: 0,
+  y: 0
+};
+
+const INITIAL_DOT_PROP = {
   data: {},
   x: 0,
   y: 0
@@ -25,7 +31,9 @@ class LineChart extends React.Component {
     this.state = {
       data: [],
       showBalloon: false,
-      balloonProps: INITIAL_BALLOON_PROPS
+      showDot: false,
+      balloonProps: INITIAL_BALLOON_PROPS,
+      dotProps: INITIAL_DOT_PROP
     };
 
     this.svg = React.createRef();
@@ -61,7 +69,7 @@ class LineChart extends React.Component {
     const xExtentMax = dayjs.unix('1564444800').toDate();// 30.07.2019
 
     const yExtentMin = 0;
-    const yExtentMax = 13827203;// max value of BBR
+    const yExtentMax = TOTAL_COINS;// max value of BBR
 
     this.yExtentWithMiddle = this.getExtentsWithMiddlePoint([yExtentMin, yExtentMax]);
     this.xExtent = [xExtentMin, xExtentMax];
@@ -76,12 +84,13 @@ class LineChart extends React.Component {
     return extentsWithMiddle;
   };
 
-  showBalloon = (show, props) => {
-    this.setState(() => ({ showBalloon: show, balloonProps: props }));
+  toggleBalloon = (showing) => {
+    this.setState(() => ({ showBalloon: showing }));
   };
 
   renderBalloon = () => {
     const { balloonProps: { data, x, y } } = this.state;
+
     const date = dayjs(data.date).format('D MMMM YYYY').toString();
     const value = d3.format('.2s')(data.value);
 
@@ -140,13 +149,13 @@ class LineChart extends React.Component {
       .lower()
       .attr('transform', `translate(${this.margin}, ${this.margin})`);
 
-    this.showBalloon(true, { data, x, y });
+    this.toggleBalloon(true);
   };
 
   removeLines = () => {
+    this.toggleBalloon(false);
     d3.select('#dot-line-vertical').remove();
     d3.select('#dot-line-horizontal').remove();
-    this.showBalloon(false, INITIAL_BALLOON_PROPS);
   };
 
   renderChart = () => {
@@ -195,17 +204,13 @@ class LineChart extends React.Component {
     gradient.append('stop')
       .attr('class', 'stop-one')
       .attr('offset', '0%');
-    // green
+    // blue
     gradient.append('stop')
       .attr('class', 'stop-two')
-      .attr('offset', '25%');
-    // yellow
+      .attr('offset', '50%');
+    // green
     gradient.append('stop')
       .attr('class', 'stop-three')
-      .attr('offset', '50%');
-    // red
-    gradient.append('stop')
-      .attr('class', 'stop-four')
       .attr('offset', '100%');
 
     // Generate X axis
@@ -261,21 +266,52 @@ class LineChart extends React.Component {
       .append('circle')
       .attr('class', 'dot')
       .attr('cx', (d) => xScale(d.date))
-      .attr('cy', (d) => yScale(d.value))
-      .attr('r', 8)
-      .on('mouseover', (d) => {
-        this.renderHoverLines(d);
+      .attr('cy', (d) => {
+        const x = xScale(d.date);
+        const y = yScale(d.value);
+
+        this.setState(() => ({
+          balloonProps: {
+            x,
+            y,
+            data: d
+          },
+          dotProps: {
+            x,
+            y,
+            data: d
+          }
+        }));
+
+        return yScale(d.value)
       })
-      .on('mouseout', () => {
-        this.removeLines();
-      });
+      .attr('r', 8);
 
     // One of the requirements from design - remove first circle
     // d3.select('circle').remove();
+
+    // Render dot with Zano icon
+    this.setState(() => ({ showDot: true }));
+  };
+
+  renderDot = () => {
+    const { dotProps: { x, y } } = this.state;
+
+    const props = {
+      className: 'dot',
+      style: { top: y, left: x },
+      onMouseEnter: () => this.toggleBalloon(true),
+      onMouseLeave: () => this.toggleBalloon(false)
+    };
+
+    return (
+      <span {...props} />
+    )
   };
 
   render() {
     const { isLoading } = this.props;
+    const { showBalloon, showDot } = this.state;
 
     const containerProps = {
       className: 'container',
@@ -294,7 +330,8 @@ class LineChart extends React.Component {
     return (
       <div {...containerProps}>
         { isLoading ? <Loader /> : <svg {...svgProps} /> }
-        { this.state.showBalloon ? this.renderBalloon() : false }
+        { showBalloon ? this.renderBalloon() : false }
+        { showDot ? this.renderDot() : false }
       </div>
     );
   }

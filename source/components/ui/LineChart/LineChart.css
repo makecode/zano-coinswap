@@ -15,11 +15,15 @@
   line-height: 1.4;
   border-radius: 10px;
   background-color: #253770;
-  transform: translate(-70%, -95%);
+  transform: translate(-160px, -92px);
   text-align: left;
   pointer-events: none;
   box-sizing: border-box;
   white-space: nowrap;
+}
+
+.balloon p {
+  line-height: 1.4;
 }
 
 .balloon::after {
@@ -93,8 +97,8 @@
 }
 
 .dot {
-  stroke: #4CB952;
-  fill: #CBCD18;
+  stroke: #43e65a;
+  fill: #141935;
   stroke-width: 3;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -112,17 +116,22 @@
 }
 
 .stop-two {
-  stop-color: #4CB952;
+  stop-color: #0662e0;
 }
 
 .stop-three {
-  stop-color: #CBCD18;
-}
-
-.stop-four {
-  stop-color: #BD1C1C;
+  stop-color: #43e65a;
 }
 
 .filled {
   stroke: url(#gradient);
+}
+
+.dot {
+  display: inline-block;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-image: url('~media/images/zano_icon.svg');
+  background-size: cover;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Title, Questions } from './../../index';
-import { TITLES, QUESTIONS } from '../../../../source/framework/constants/app';
+
 
 class Faq extends React.Component {
   constructor(props) {
@@ -17,17 +17,18 @@ class Faq extends React.Component {
   }));
 
   render() {
+    const { txt } = this.props;
     const { activeQuestion } = this.state;
 
     const questionProps = {
-      questions: QUESTIONS,
+      questions: txt.sectionFaq.questions,
       active: activeQuestion,
       onClick: this.changeActiveQuestion
     };
 
     return (
       <section className='section faq container'>
-        <Title title={TITLES.faq} shadow='Faq' centred />
+        <Title title={txt.sectionFaq.title} shadow={txt.sectionFaq.titleShadow} centred />
         <Questions {...questionProps} />
       </section>
     )

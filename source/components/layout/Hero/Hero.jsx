@@ -2,26 +2,25 @@ import React from 'react';
 
 import { Title, Button, Icon, DropDown, Countdown } from './../../index';
 
-import { TITLES } from '../../../../source/framework/constants/app';
 
 const DROPDOWN_ITEMS = [
   { title: 'Github', link: 'https://github.com/hyle-team/zano' }
 ];
 
-const Hero = () => {
+const Hero = ({ txt }) => {
   return (
     <section className='section hero'>
-      <Title title={TITLES.hero} shadow='Coinswap' centred />
-      <p className='section__text'>
-        Boolberry holders can swap their coins for Zano, learn more in the whitepaper and FAQ below.
-      </p>
+      <Title title={txt.sectionHero.title} shadow={txt.sectionHero.titleShadow} centred />
+      <p className='section__text'>{txt.sectionHero.description}</p>
       <div className='buttons'>
         <DropDown  className='hero-button' items={DROPDOWN_ITEMS}>
-          <span>Whitepaper</span>
+          <span>{txt.sectionHero.buttonOne}</span>
           <Icon title='triangle' />
         </DropDown>
         {/*<Button class='hero-button'>Stats</Button>*/}
-        <Button className='hero-button'>Manual</Button>
+        <Button className='hero-button'>
+          {txt.sectionHero.buttonTwo}
+        </Button>
         <Countdown />
       </div>
     </section>
