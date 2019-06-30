@@ -109,7 +109,7 @@ class Chart extends React.Component {
                 <span className='period__num'>{ texts.periodCurrent.ratio.bbr }</span>
                 <span> BBR = </span>
                 <span className='period__num'>{ texts.periodCurrent.ratio.zan }</span>
-                <span> ZAN</span>
+                <span> ZANO</span>
               </p>
             </div>
           </div>

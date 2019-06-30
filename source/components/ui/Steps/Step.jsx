@@ -15,7 +15,9 @@ const Step = ({ classNames, icon, title, active, subtitle, description, button }
       </div>
       <h5 className='step-subtitle'>{subtitle}</h5>
       <p className='step-description'>{description}</p>
-      {button && <Button className='step-button' blue>{button.title}</Button>}
+      {button && <Button className='step-button' blue>
+        {button.link ? (<a href={button.link}>{button.title}</a>) : <span>{button.title}</span>}
+      </Button>}
     </div>
   )
 };

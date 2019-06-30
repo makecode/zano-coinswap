@@ -19,6 +19,7 @@ class App extends Component {
       .then((res) => res.json())
       .then((res) => {
         this.setState(() => ({ txt: res }));
+        console.log(res);
       })
       .finally(() => {
         this.setState(() => ({ isLoading: false }));
