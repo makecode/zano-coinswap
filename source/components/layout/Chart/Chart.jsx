@@ -6,14 +6,7 @@ import { API_GET_CHART_DATA } from '../../../framework/constants/api';
 
 const texts = {
   counterTotal: {
-    text: [{ title: 'Total' }],
-    shadow: 'Total',
     counter: '13827203'
-  },
-  counterDone: {
-    text: [{ title: 'Coins' }, { title: 'Swapped' }],
-    shadow: 'Swapped',
-    counter: '0'
   },
   periodCurrent: {
     monthFirst: {
@@ -21,7 +14,7 @@ const texts = {
       day: 30
     },
     monthSecond: {
-      title: 'Jule',
+      title: 'July',
       day: 30
     },
     ratio: {
@@ -65,6 +58,7 @@ class Chart extends React.Component {
   };
 
   render() {
+    const { txt } = this.props;
     const { data, isLoading } = this.state;
 
     const isAlreadySwapped = data.length ? data[data.length - 1].value : 0;
@@ -81,11 +75,11 @@ class Chart extends React.Component {
       <section className='section visualization container'>
         <div className='titles'>
           <div className='left'>
-            <Title title={ texts.counterTotal.text } shadow={ texts.counterTotal.shadow } shadowAlign='left' small />
+            <Title title={ txt.sectionChart.total.title} shadow={ txt.sectionChart.total.titleShadow } shadowAlign='left' small />
             <div className='count'><span>{texts.counterTotal.counter}</span><span className='text-blue'> BBR</span></div>
           </div>
           <div className='right'>
-            <Title title={ texts.counterDone.text } shadow={ texts.counterDone.shadow } shadowAlign='right' small={true} />
+            <Title title={ txt.sectionChart.done.title } shadow={ txt.sectionChart.done.titleShadow } shadowAlign='right' small={true} />
             <div className='count'><span>{isAlreadySwapped}</span><span className='text-blue'> BBR</span></div>
           </div>
         </div>

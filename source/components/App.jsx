@@ -20,9 +20,10 @@ class App extends Component {
       .then((res) => {
         this.setState(() => ({ txt: res }));
         console.log(res);
-      })
-      .finally(() => {
         this.setState(() => ({ isLoading: false }));
+      })
+      .catch((error) => {
+        throw new Error(error);
       })
   }
 
@@ -32,10 +33,9 @@ class App extends Component {
     return (
       <React.Fragment>
         <Hero txt={txt} />
-        <Chart />
+        <Chart txt={txt} />
         <How txt={txt} />
         <Faq txt={txt} />
-        <Footer />
       </React.Fragment>
     );
   };
@@ -50,8 +50,8 @@ class App extends Component {
     return (
       <div className='App'>
         <Header />
-        {/*{ this.renderContent() }*/}
         { this.state.isLoading ? this.renderLoader() : this.renderContent() }
+        <Footer />
       </div>
     )
   }

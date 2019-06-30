@@ -66,7 +66,7 @@ class LineChart extends React.Component {
     const { data } = this.props;
 
     const xExtentMin = d3.min(data, d => d.date);
-    const xExtentMax = dayjs.unix('1564444800').toDate();// 30.07.2019
+    const xExtentMax = dayjs.unix('1564488000').toDate();// 30.07.2019 12:00 UTC
 
     const yExtentMin = 0;
     const yExtentMax = TOTAL_COINS;// max value of BBR
