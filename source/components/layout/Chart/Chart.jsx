@@ -93,9 +93,9 @@ class Chart extends React.Component {
             <div className='period__data'>
               <p className='period__value'>
                 <span>{ texts.periodCurrent.monthFirst.title } </span>
-                <span className='period__num'>{ texts.periodCurrent.monthFirst.day }<sup>st</sup></span>
+                <span className='period__num'>{ texts.periodCurrent.monthFirst.day }<sup>th</sup></span>
                 <span> – { texts.periodCurrent.monthSecond.title } </span>
-                <span className='period__num'>{ texts.periodCurrent.monthSecond.day }<sup>st</sup></span>
+                <span className='period__num'>{ texts.periodCurrent.monthSecond.day }<sup>th</sup></span>
               </p>
 
               <p className='period__value'>

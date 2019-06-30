@@ -4,7 +4,7 @@ class Countdown extends React.Component {
   constructor(props) {
     super(props);
 
-    this.futureDate = new Date('30 July, 2019').getTime();
+    this.futureDate = new Date('30 July 2019, 12:00:00 UTC').getTime();
     this.timer = null;
 
     this.state = {
