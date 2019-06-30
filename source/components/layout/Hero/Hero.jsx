@@ -19,7 +19,9 @@ const Hero = ({ txt }) => {
         </DropDown>
         {/*<Button class='hero-button'>Stats</Button>*/}
         <Button className='hero-button'>
-          {txt.sectionHero.buttonTwo}
+          <a href='#how'>
+            {txt.sectionHero.buttonTwo}
+          </a>
         </Button>
         <Countdown />
       </div>

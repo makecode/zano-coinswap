@@ -5,7 +5,7 @@ import { Title, Steps } from './../../index';
 const How = ({ txt }) => {
 
   return (
-    <section className='section how'>
+    <section className='section how' id='how'>
       <div className='section-wrap container'>
         <div className='section-left'>
           <Title title={txt.sectionHow.title} shadow={txt.sectionHow.titleShadow} centred />
