@@ -30,7 +30,7 @@ class LineChart extends React.Component {
 
     this.state = {
       data: [],
-      showBalloon: false,
+      showBalloon: true,
       showDot: false,
       balloonProps: INITIAL_BALLOON_PROPS,
       dotProps: INITIAL_DOT_PROP
@@ -299,9 +299,11 @@ class LineChart extends React.Component {
 
     const props = {
       className: 'dot',
-      style: { top: y, left: x },
-      onMouseEnter: () => this.toggleBalloon(true),
-      onMouseLeave: () => this.toggleBalloon(false)
+      style: { top: y, left: x }
+
+      // if you need show bubble on hover uncomment two next strings
+      // onMouseEnter: () => this.toggleBalloon(true),
+      // onMouseLeave: () => this.toggleBalloon(false)
     };
 
     return (
