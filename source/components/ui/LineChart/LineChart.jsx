@@ -49,6 +49,10 @@ class LineChart extends React.Component {
   };
 
   static propTypes = {
+    xMax: PropTypes.string,
+    yMin: PropTypes.number,
+    xFormat: PropTypes.string,
+    xExtent: PropTypes.array,
     isLoading: PropTypes.bool,
     width: PropTypes.number,
     height: PropTypes.number,
@@ -63,16 +67,14 @@ class LineChart extends React.Component {
   }
 
   setupExtents = () => {
-    const { data } = this.props;
+    const { data, xMax, yMin, xExtent } = this.props;
 
     const xExtentMin = d3.min(data, d => d.date);
-    const xExtentMax = dayjs.unix('1564488000').toDate();// 30.07.2019 12:00 UTC
-
-    const yExtentMin = 0;
+    const xExtentMax = dayjs.unix(xMax).toDate();// 30.07.2019 12:00 UTC
+    const yExtentMin = yMin;
     const yExtentMax = TOTAL_COINS;// max value of BBR
-
     this.yExtentWithMiddle = this.getExtentsWithMiddlePoint([yExtentMin, yExtentMax]);
-    this.xExtent = [xExtentMin, xExtentMax];
+    this.xExtent = xExtent.length ? xExtent : [xExtentMin, xExtentMax];
     this.yExtent = [yExtentMin, yExtentMax];
   };
 
@@ -159,7 +161,7 @@ class LineChart extends React.Component {
   };
 
   renderChart = () => {
-    const { data } = this.props;
+    const { data, xFormat } = this.props;
 
     const lastValueFromData = data[data.length - 1];
     const dotsData = Object.assign([], [ lastValueFromData ]);
@@ -191,7 +193,7 @@ class LineChart extends React.Component {
       .tickSize(0)
       .tickPadding(10)
       .tickFormat((d) => {
-        const format = d3.timeFormat('%d/%m/%Y');
+        const format = d3.timeFormat(xFormat);
         return format(d);
       });
 
@@ -316,7 +318,7 @@ class LineChart extends React.Component {
     const { showBalloon, showDot } = this.state;
 
     const containerProps = {
-      className: 'container',
+      className: 'chart-container',
       style: {
         width: this.width + this.margin * 2,
         height: this.height + this.margin * 2
@@ -332,8 +334,8 @@ class LineChart extends React.Component {
     return (
       <div {...containerProps}>
         { isLoading ? <Loader /> : <svg {...svgProps} /> }
-        { showBalloon ? this.renderBalloon() : false }
-        { showDot ? this.renderDot() : false }
+        { showBalloon && !isLoading ? this.renderBalloon() : false }
+        { showDot && !isLoading ? this.renderDot() : false }
       </div>
     );
   }

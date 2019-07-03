@@ -1,8 +1,9 @@
 import React from 'react';
-import dayjs from 'dayjs';
+import _get from 'lodash.get';
 
-import { Title, LineChart } from '../../index';
-import { API_GET_CHART_DATA } from '../../../framework/constants/api';
+import { Title, LineChart, Switcher } from '../../index';
+import { API_GET_DATA_ALL, API_GET_DATA_DAY } from '../../../framework/constants/api';
+import { getStartEndOfTheDay, transformData } from '../../../framework/utils';
 
 const texts = {
   counterTotal: {
@@ -30,25 +31,39 @@ class Chart extends React.Component {
 
     this.state = {
       data: [],
+      activePeriod: 1,// we have two modes: 0 - day view, 1 - all period view
+      chartConfig: {},
       isLoading: true
     };
   }
 
 
   componentDidMount() {
-    fetch(API_GET_CHART_DATA)
+    this.fetchChartData();
+  };
+
+  fetchChartData = () => {
+    const { activePeriod } = this.state;
+    const URL = activePeriod === 1 ? API_GET_DATA_ALL : API_GET_DATA_DAY;
+
+    fetch(URL)
       .then((res) => res.json())
       .then((res) => {
-        const transformedData = res.map(d => ({
-          date: dayjs.unix(d.bbr_hourstamp).toDate(),
-          value: d.amount_in_bbr
-        }));
+        const data = activePeriod === 1 ? res : res.dayTransactions;
+        const transformedData = transformData(data);
+        const chartConfig = {};
 
+        chartConfig.xMax = activePeriod === 1 ? '1564488000' : _get(res, 'currentDay.date', '');
+        chartConfig.yMin = activePeriod === 1 ? 0 : _get(res, 'currentDay.bbrSwaped', 0);
+        chartConfig.xFormat = activePeriod === 1 ? '%d/%m/%Y' : '%H h';
+        chartConfig.xExtent = activePeriod === 1 ? [] : getStartEndOfTheDay();
 
         this.setState(() => ({
+          chartConfig,
           data: transformedData,
           isLoading: false
         }));
+
       })
       .finally(() => {
         this.setState(() => ({
@@ -59,16 +74,26 @@ class Chart extends React.Component {
 
   render() {
     const { txt } = this.props;
-    const { data, isLoading } = this.state;
+    const { data, isLoading, activePeriod, chartConfig } = this.state;
 
     const isAlreadySwapped = data.length ? data[data.length - 1].value : 0;
 
     const lineChartProps = {
+      ...chartConfig,
       data,
       isLoading,
       width: 1140,
       height: 450,
       margin: 20
+    };
+
+    const switcherProps = {
+      activeIndex: activePeriod,
+      items: ['HOURS', 'DAYS'],
+      onClick: (index) => this.setState(() => ({
+        activePeriod: index,
+        isLoading: true
+      }), this.fetchChartData)
     };
 
     return (
@@ -107,6 +132,8 @@ class Chart extends React.Component {
               </p>
             </div>
           </div>
+
+          <Switcher {...switcherProps} />
         </div>
       </section>
     );

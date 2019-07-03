@@ -1,60 +1,46 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { Loader, Header, Footer, Hero, Chart, How, Faq } from './index';
+import { request } from '../framework/utils';
+
+import { API_GET_TEXTS } from '../framework/constants/api';
 
 import './../styles/index.sass';
-import {API_GET_TEXTS} from "../framework/constants/api";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [ texts, setTexts ] = useState({});
+  const [ loading, setLoading  ] = useState(true);
 
-    this.state = {
-      isLoading: true,
-      txt: {}
-    }
-  }
-
-  componentDidMount() {
-    fetch(API_GET_TEXTS)
-      .then((res) => res.json())
+  useEffect(() => {
+    request(API_GET_TEXTS)
       .then((res) => {
-        this.setState(() => ({ txt: res }));
-        console.log(res);
-        this.setState(() => ({ isLoading: false }));
-      })
-      .catch((error) => {
-        throw new Error(error);
-      })
-  }
+        setTexts(res);
+        setLoading(false);
+      });
+  }, []);
 
-  renderContent = () => {
-    const { txt } = this.state;
-
-    return (
-      <React.Fragment>
-        <Hero txt={txt} />
-        <Chart txt={txt} />
-        <How txt={txt} />
-        <Faq txt={txt} />
-      </React.Fragment>
-    );
-  };
-
-  renderLoader = () => (
+  const renderLoader = () => (
     <div className='loader-container'>
       <Loader />
     </div>
   );
 
-  render() {
-    return (
-      <div className='App'>
-        <Header />
-        { this.state.isLoading ? this.renderLoader() : this.renderContent() }
-        <Footer />
-      </div>
-    )
-  }
-}
+  const renderContent = () => (
+    <React.Fragment>
+      <Hero txt={texts} />
+      <Chart txt={texts} />
+      <How txt={texts} />
+      <Faq txt={texts} />
+    </React.Fragment>
+  );
+
+  return (
+    <div className='App'>
+      <Header />
+      { loading ? renderLoader() : renderContent() }
+      <Footer />
+    </div>
+  )
+};
 
 export default App;

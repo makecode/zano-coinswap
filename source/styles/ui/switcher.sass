@@ -1,0 +1,29 @@
+.switcher
+  position: relative
+  border: 2px solid #2b3052
+  padding: 2px
+  border-radius: 10px
+  color: white
+  text-transform: uppercase
+  font-size: 12px
+  font-weight: bold
+  overflow: hidden
+
+.switcher__item
+  display: inline-block
+  width: 86px
+  height: 30px
+  line-height: 30px
+  text-align: center
+  cursor: pointer
+  user-select: none
+
+.switcher__item:first-child
+  border-radius: 6px 0 0 6px
+
+.switcher__item:last-child
+  border-radius: 0 6px 6px 0
+
+.switcher__item.active
+  background-image: linear-gradient(to bottom, $button-gradient-two, $button-gradient-one)
+

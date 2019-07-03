@@ -18,4 +18,5 @@ export { default as Nav } from './ui/Nav/Nav';
 export { default as Questions } from './ui/Questions/Questions';
 export { default as Social } from './ui/Social/Social';
 export { default as Steps } from './ui/Steps/Steps';
+export { default as Switcher } from './ui/Switcher/Switcher';
 export { default as Title } from './ui/Title/Title';
