@@ -32,7 +32,7 @@ class Chart extends React.Component {
 
     this.state = {
       data: [],
-      activePeriod: 0,// we have two modes: 0 - day view, 1 - all period view
+      activePeriod: 1,// we have two modes: 0 - day view, 1 - all period view
       chartConfig: {},
       isLoading: true
     };
