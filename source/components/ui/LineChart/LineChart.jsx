@@ -67,11 +67,12 @@ class LineChart extends React.Component {
   }
 
   setupExtents = () => {
-    const { data, xMax, yMin, xExtent } = this.props;
+    const { data, xMax, xExtent } = this.props;
 
     const xExtentMin = d3.min(data, d => d.date);
     const xExtentMax = dayjs.unix(xMax).toDate();// 30.07.2019 12:00 UTC
-    const yExtentMin = yMin;
+
+    const yExtentMin = 0;
     const yExtentMax = TOTAL_COINS;// max value of BBR
     this.yExtentWithMiddle = this.getExtentsWithMiddlePoint([yExtentMin, yExtentMax]);
     this.xExtent = xExtent.length ? xExtent : [xExtentMin, xExtentMax];
@@ -209,7 +210,7 @@ class LineChart extends React.Component {
     // blue
     gradient.append('stop')
       .attr('class', 'stop-two')
-      .attr('offset', '50%');
+      .attr('offset', '25%');
     // green
     gradient.append('stop')
       .attr('class', 'stop-three')

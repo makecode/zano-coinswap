@@ -8,10 +8,15 @@ export const request = (url) =>
       throw new Error(error);
     });
 
-export const transformData = res => res.length ? res.map(d => ({
-  date: dayjs.unix(d.bbr_hourstamp).toDate(),
-  value: d.amount_in_bbr
-})) : [];
+export const transformData = res => res.length ? res.map(d => {
+  // const transformedDate = dayjs.unix(d.bbr_hourstamp);
+  const date = new Date(d.bbr_hourstamp * 1000);
+
+  return ({
+    date: date,
+    value: d.amount_in_bbr
+  });
+}) : [];
 
 export const getStartEndOfTheDay = () => {
   const start = new Date();

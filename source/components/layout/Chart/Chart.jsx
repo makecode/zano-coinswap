@@ -1,5 +1,6 @@
 import React from 'react';
 import _get from 'lodash.get';
+import moment from 'moment';
 
 import { Title, LineChart, Switcher } from '../../index';
 import { API_GET_DATA_ALL, API_GET_DATA_DAY } from '../../../framework/constants/api';
@@ -31,7 +32,7 @@ class Chart extends React.Component {
 
     this.state = {
       data: [],
-      activePeriod: 1,// we have two modes: 0 - day view, 1 - all period view
+      activePeriod: 0,// we have two modes: 0 - day view, 1 - all period view
       chartConfig: {},
       isLoading: true
     };
@@ -50,11 +51,20 @@ class Chart extends React.Component {
       .then((res) => res.json())
       .then((res) => {
         const data = activePeriod === 1 ? res : res.dayTransactions;
+
+        if (activePeriod !==1) {
+          const currentStartOfDay = moment().startOf('day').unix();
+
+          data.unshift({
+            amount_in_bbr: _get(res, 'currentDay.bbrSwaped'),
+            bbr_hourstamp: currentStartOfDay
+          });
+        }
+
         const transformedData = transformData(data);
         const chartConfig = {};
 
         chartConfig.xMax = activePeriod === 1 ? '1564488000' : _get(res, 'currentDay.date', '');
-        chartConfig.yMin = activePeriod === 1 ? 0 : _get(res, 'currentDay.bbrSwaped', 0);
         chartConfig.xFormat = activePeriod === 1 ? '%d/%m/%Y' : '%H h';
         chartConfig.xExtent = activePeriod === 1 ? [] : getStartEndOfTheDay();
 
