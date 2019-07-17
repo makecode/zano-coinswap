@@ -1,14 +1,12 @@
 import React from 'react';
 
-import Logo from './../../ui/Logo/Logo';
-import Nav from './../../ui/Nav/Nav';
-import Social from './../../ui/Social/Social';
+import { Logo, Social, FooterNav } from '../../index';
 
 const Footer = () => {
   return (
     <footer className='footer'>
       <Logo/>
-      <Nav />
+      <FooterNav />
       <Social/>
       <span className="copyright">Copyright © 2019 ZANO.org</span>
     </footer>

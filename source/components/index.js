@@ -15,6 +15,7 @@ export { default as Logo } from './ui/Logo/Logo';
 export { default as Loader } from './ui/Loader/Loader';
 export { default as LineChart } from './ui/LineChart/LineChart';
 export { default as Nav } from './ui/Nav/Nav';
+export { default as FooterNav } from './ui/FooterNav/FooterNav';
 export { default as Questions } from './ui/Questions/Questions';
 export { default as Social } from './ui/Social/Social';
 export { default as Steps } from './ui/Steps/Steps';

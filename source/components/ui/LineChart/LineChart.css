@@ -99,7 +99,7 @@
 }
 
 .dot {
-  stroke: #43e65a;
+  /*stroke: #43e65a;*/
   fill: #141935;
   r: 3;
   stroke-width: 3;
@@ -115,15 +115,15 @@
 
 /* SVG Gradient config */
 .stop-one {
-  stop-color: rgba(20, 25, 53, 0.2);
+  /*stop-color: rgba(20, 25, 53, 0.2);*/
 }
 
 .stop-two {
-  stop-color: #0662e0;
+  /*stop-color: #0662e0;*/
 }
 
 .stop-three {
-  stop-color: #43e65a;
+  /*stop-color: #43e65a;*/
 }
 
 .filled {

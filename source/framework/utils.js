@@ -30,3 +30,8 @@ export const getStartEndOfTheDay = () => {
 
   return [timestampStart, timestampEnd];
 };
+
+export const getCurrentDay = () => {
+  const date = new Date();
+  return date.getDate();
+};

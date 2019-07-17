@@ -53,10 +53,15 @@ class LineChart extends React.Component {
     yMin: PropTypes.number,
     xFormat: PropTypes.string,
     xExtent: PropTypes.array,
+    currentDay: PropTypes.number,
     isLoading: PropTypes.bool,
     width: PropTypes.number,
     height: PropTypes.number,
     margin: PropTypes.number
+  };
+
+  static defaultProps = {
+    currentDay: 15
   };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -162,7 +167,7 @@ class LineChart extends React.Component {
   };
 
   renderChart = () => {
-    const { data, xFormat } = this.props;
+    const { data, xFormat, currentDay } = this.props;
 
     const lastValueFromData = data[data.length - 1];
     const dotsData = Object.assign([], [ lastValueFromData ]);
@@ -203,17 +208,21 @@ class LineChart extends React.Component {
     const gradient = defs.append('linearGradient')
       .attr('id', 'gradient');
 
+    const currentColor = 93 - currentDay * 3;
+
     // darkblue
     gradient.append('stop')
       .attr('class', 'stop-one')
+      .attr('stop-color', `hsl(120, 120%, 50%)`)
       .attr('offset', '0%');
     // blue
-    gradient.append('stop')
-      .attr('class', 'stop-two')
-      .attr('offset', '25%');
+    // gradient.append('stop')
+    //   .attr('class', 'stop-two')
+    //   .attr('offset', '50%');
     // green
     gradient.append('stop')
       .attr('class', 'stop-three')
+      .attr('stop-color', `hsl(${currentColor}, 100%, 50%)`)
       .attr('offset', '100%');
 
     // Generate X axis
@@ -268,6 +277,7 @@ class LineChart extends React.Component {
       .enter()
       .append('circle')
       .attr('class', 'dot')
+      .attr('stroke', `hsl(${currentColor}, 100%, 50%)`)
       .attr('cx', (d) => xScale(d.date))
       .attr('cy', (d) => {
         const x = xScale(d.date);

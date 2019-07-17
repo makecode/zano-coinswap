@@ -4,7 +4,7 @@ import moment from 'moment';
 
 import { Title, LineChart, Switcher } from '../../index';
 import { API_GET_DATA_ALL, API_GET_DATA_DAY } from '../../../framework/constants/api';
-import { getStartEndOfTheDay, transformData } from '../../../framework/utils';
+import { getStartEndOfTheDay, getCurrentDay, transformData } from '../../../framework/utils';
 
 const texts = {
   counterTotal: {
@@ -87,11 +87,13 @@ class Chart extends React.Component {
     const { data, isLoading, activePeriod, chartConfig } = this.state;
 
     const isAlreadySwapped = data.length ? data[data.length - 1].value : 0;
+    const currentDay = getCurrentDay();
 
     const lineChartProps = {
       ...chartConfig,
       data,
       isLoading,
+      currentDay,
       width: 1140,
       height: 450,
       margin: 20
