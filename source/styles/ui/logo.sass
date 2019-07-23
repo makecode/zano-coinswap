@@ -13,6 +13,7 @@
     transition: transform 1s ease-in-out
 
   &__text
+    display: block
     margin-left: 14px
     text-transform: uppercase
     font-weight: 700
@@ -22,6 +23,14 @@
 
     +m($tablet)
       display: none
+
+  &__world
+    display: block
+    line-height: 1.6
+
+  &__world:last-child
+    color: #7cabee
+
 
 .logo:hover .logo__image
   transform: rotateY(180deg)

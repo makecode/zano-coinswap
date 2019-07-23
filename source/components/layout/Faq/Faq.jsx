@@ -27,7 +27,7 @@ class Faq extends React.Component {
     };
 
     return (
-      <section className='section faq container'>
+      <section className='section faq container' id='faq'>
         <Title title={txt.sectionFaq.title} shadow={txt.sectionFaq.titleShadow} centred />
         <Questions {...questionProps} />
       </section>

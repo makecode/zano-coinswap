@@ -41,12 +41,12 @@ const footerNav = [
 
 export const FooterNav = () => (
   <div className='footer-nav'>
-    {footerNav.map((section) => (
-      <div className='footer-nav__section'>
+    {footerNav.map((section, index) => (
+      <div className='footer-nav__section' key={`f-s-${index}`}>
         <h4 className='footer-nav__title'>{section.title}</h4>
         <ul className='footer-nav__list'>
-          {section.links.map((link) => (
-            <li className='footer-nav__el'>
+          {section.links.map((link, index) => (
+            <li className='footer-nav__el' key={`f-el-${index}`}>
               <a className={classnames('footer-nav__link navigation__link', { 'disabled': link.disabled })} href={link.link}>{link.title}</a>
             </li>
           ))}
